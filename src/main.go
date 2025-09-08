@@ -81,6 +81,7 @@ func characterCreation() {
 		// set les stats
 	case "Netrunner":
 		// set les stats
+	}
 }
 
 func displayInfo() {
