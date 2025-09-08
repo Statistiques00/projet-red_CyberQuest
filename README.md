@@ -1,43 +1,39 @@
-# SecureEntry - Gestion des Entrées et Sorties avec RFID
+# CYBERQUEST
 
+Bienvenue dans **CyberQuest**, un RPG en ligne de commande où le monde n’est plus fait de magie et d’épées, mais de **paquets de données, de firewalls et de puissance de calcul**.  
+Incarnez un **hacker-avatars** dans un univers numérique corrompu par des IA hostiles, et survivez grâce à votre équipement high-tech, vos scripts de combat et vos alliés.
 
 ## Fonctionnalités
 
 
 ## Structure du Projet
 ```
-GrandOral/
-          ├── .env                  # Fichier de configuration des variables d'environnement
-          ├── .gitignore            # Fichiers et dossiers à ignorer par Git
-          ├── app.py                # Fichier principal de l'application Flask
-          ├── createadmin.py        # Script pour créer un utilisateur administrateur
-          ├── requirements.txt      # Liste des dépendances Python
-          ├── scan_rfid.py          # Script pour gérer la lecture des badges RFID
-          ├── lecteur_rfid/         # Dossier contenant les scripts liés au lecteur RFID
-          │   └── lecteur_rfid.py   # Script pour interagir avec le matériel RFID
-          ├── templates/            # Dossier contenant les fichiers HTML pour l'interface utilisateur
-          │   ├── index.html        # Page d'accueil
-          │   ├── rechercher.html   # Page pour rechercher un étudiant
-          │   ├── registre.html     # Page pour afficher le registre des entrées/sorties
-          │   ├── badges_inconnus.html # Page pour gérer les badges inconnus
-          │   ├── simulateur.html   # Page pour simuler les actions RFID
-          │   ├── login.html        # Page de connexion
-          │   └── menu.html         # Menu principal
-          ├── instance/             # Dossier contenant les fichiers spécifiques à l'instance
-          │   ├── database.db       # Base de données SQLite
-          │   └── COMMANDE.txt      # Fichier de commandes ou notes spécifiques
-          └── README.md             # Documentation du projet
+CyberQuest/
+        
 ```
+
 ## Prérequis
 
-- Go
+Avant d’installer et d’utiliser CyberQuest, assurez-vous d’avoir :
+
+- **Go** (version 1.20 ou supérieure)
+    - Téléchargez et installez Go depuis : https://go.dev/dl/
+    - Vérifiez l’installation avec `go version`
+- **Un terminal de commande** (Windows PowerShell, Terminal macOS, ou bash Linux)
+- **Git** (pour cloner le dépôt)
+    - Téléchargez et installez Git depuis : https://git-scm.com/
+    - Vérifiez l’installation avec `git --version`
+
+Optionnel :
+- Un éditeur de texte (VS Code, Sublime Text, etc.)
+- Un accès à Internet pour récupérer les dépendances
 
 ## Installation
 
 1. Clonez le dépôt :
     ```bash
-    git clone https://github.com/Statistiques00/
-    cd```
+    git clone https://github.com/Statistiques00/projet-red_CyberQuest
+    cd src/```
 
 ## Utilisation
 
