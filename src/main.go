@@ -75,6 +75,14 @@ func characterCreation() {
 
 func displayInfo() {
 	// afficher les infos des personnages ici
+	Name       string
+	MaxHP      int
+	HP         int
+	Attack     int
+	Defense    int
+	Speed      int
+	Experience int
+	Loot       []string
 
 }
 
