@@ -1,5 +1,6 @@
 package main
 
+<<<<<<< HEAD
 // importer les packages necessaires ici
 
 func initCharacter() {
@@ -50,3 +51,8 @@ func poisonPot() {
 func isDead() {
 	// verifier si le personnage est mort ici
 }
+=======
+func main() {
+
+}
+>>>>>>> 05a8740c3d7f5eab67b1ebde230c322370898ece
