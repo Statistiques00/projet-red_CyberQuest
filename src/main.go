@@ -116,19 +116,32 @@ func spaces(n int) string {
 func characterCreation() {
 	// creer un personnage ici
 	// ne pas oublier les classes
-	// utiliser des switch case
+	// utiliser des switch cases
+	println("Quel est votre nom ?")
+	player.Name = scan(&player.Name)
+	println("Choisissez une classe parmi Overclockeur, Sysadmin et Netrunner")
+	switch scan(&player.Class) {
+	case "Overclockeur":
+		// set les stats
+	case "Sysadmin":
+		// set les stats
+	case "Netrunner":
+		// set les stats
+	}
 }
 /*
 func displayInfo() {
 	// afficher les infos des personnages ici
-	Name       string
-	MaxHP      int
-	HP         int
-	Attack     int
-	Defense    int
-	Speed      int
-	Experience int
-	Loot       []string
+	println(player.Name)
+	println(player.Class)
+	println(player.Level)
+	println(player.Gold)
+	println(player.Equipment)
+	println(player.Mana)
+	println(player.Spells)
+	println(player.MaxHP)
+	println(player.HP)
+	println(player.Defense)
 
 }*/
 
