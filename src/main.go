@@ -40,7 +40,7 @@ type Monster struct {
 
 func initCharacter() {
 	// initialiser les personnages ici
-	perso := Character{
+	player := Character{
 		Name:  "Hero",
 		Class: "Warrior",
 		Level: 1,
