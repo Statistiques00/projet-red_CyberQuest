@@ -1,45 +1,50 @@
 package main
 
+import "fmt"
+
 // importer les packages necessaires ici
 type Equipment struct {
 	// definir les equipements ici
-	Head string
-	Toros string
-	Legs string
-	Feet string
-	Hands string
+	Head   string
+	Toros  string
+	Legs   string
+	Feet   string
+	Hands  string
 	Weapon string
 	Shield string
 }
 
 type Character struct {
 	// definir les attributs des personnages ici
-	Name       string
-	Class      string
-	Level      int
-	Gold	   int
-	Equipment  Equipment
-	Mana	   int
-	Spells     []string
-	MaxHP      int
-	HP         int
-	Defense	   int
+	Name      string
+	Class     string
+	Level     int
+	Gold      int
+	Equipment Equipment
+	Mana      int
+	Spells    []string
+	MaxHP     int
+	HP        int
+	Defense   int
 }
 
 type Monster struct {
 	// definir les attributs des monstres ici
-	Name  string
-	MaxHP int
-	HP    int
-	Attack int
-	Defense int
-	Speed int
+	Name       string
+	MaxHP      int
+	HP         int
+	Attack     int
+	Defense    int
+	Speed      int
 	Experience int
-	Loot []string
+	Loot       []string
 }
 
 func initCharacter() {
 	// initialiser les personnages ici
+	var name string
+	fmt.Print("Enter your character's name: ")
+
 }
 
 func main() {
@@ -54,6 +59,7 @@ func characterCreation() {
 
 func displayInfo() {
 	// afficher les infos des personnages ici
+
 }
 
 func accesInventory() {
