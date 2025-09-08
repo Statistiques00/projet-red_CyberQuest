@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-
-	"golang.org/x/term"
 )
 
 // importer les packages necessaires ici
@@ -89,7 +87,7 @@ func main() {
 		choix := scanner.Text()
 		switch choix {
 		case "1":
-			fmt.Println("Tu as choisi l'option 1")
+			displayInfo()
 		case "2":
 			fmt.Println("Tu as choisi l'option 2")
 		case "3":
@@ -102,28 +100,23 @@ func main() {
 	}
 }
 // Affiche le texte centré dans le terminal
-func printCentered(text string) {
-	width, _, err := term.GetSize(int(os.Stdout.Fd()))
-	if err != nil || width <= len(text) {
-		fmt.Println(text)
-		return
-	}
-	padding := (width - len(text)) / 2
-	fmt.Printf("%s%s\n", spaces(padding), text)
-}
-
-func spaces(n int) string {
-	return fmt.Sprintf("%*s", n, "")
-}
 
 func characterCreation() {
 	// creer un personnage ici
 	// ne pas oublier les classes
 	// utiliser des switch cases
-	println("Quel est votre nom ?")
-	player.Name = scan(&player.Name)
-	println("Choisissez une classe parmi Overclockeur, Sysadmin et Netrunner")
-	switch scan(&player.Class) {
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("Quel est votre nom ?")
+	if scanner.Scan() {
+		player.Name = scanner.Text()
+	}
+	fmt.Println("Choisissez une classe parmi Overclockeur, Sysadmin et Netrunner")
+	var class string
+	if scanner.Scan() {
+		class = scanner.Text()
+		player.Class = class
+	}
+	switch class {
 	case "Overclockeur":
 		// set les stats
 	case "Sysadmin":
@@ -139,7 +132,7 @@ func displayInfo() {
 	println(player.Class)
 	println(player.Level)
 	println(player.Gold)
-	println(player.Equipment)
+	//println(player.Equipment)
 	println(player.Mana)
 	println(player.Spells)
 	println(player.MaxHP)
@@ -186,11 +179,29 @@ func clearScreen() {
 }
 
 func printCenteredLines(lines []string) {
-    for _, line := range lines {
-        printCentered(line)
-    }
+	for _, line := range lines {
+		printCentered(line)
+	}
+}
+
+// printCentered prints the given text centered in an 80-character wide terminal.
+func printCentered(text string) {
+	width := 80
+	padding := (width - len(text)) / 2
+	if padding < 0 {
+		padding = 0
+	}
+	fmt.Printf("%s%s\n", spaces(padding), text)
 }
 
 func printIndented(text string, indent int) {
-    fmt.Printf("%s%s\n", spaces(indent), text)
+	fmt.Printf("%s%s\n", spaces(indent), text)
+}
+
+// spaces returns a string with 'n' spaces.
+func spaces(n int) string {
+	if n <= 0 {
+		return ""
+	}
+	return fmt.Sprintf("%*s", n, "")
 }
