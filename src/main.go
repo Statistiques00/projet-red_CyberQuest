@@ -38,9 +38,12 @@ type Monster struct {
 	Loot       []string
 }
 
+// Declare player as a package-level variable
+var player Character
+
 func initCharacter() {
 	// initialiser les personnages ici
-	player := Character{
+	player = Character{
 		Name:  "Hero",
 		Class: "Warrior",
 		Level: 1,
