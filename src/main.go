@@ -1,7 +1,42 @@
 package main
 
-<<<<<<< HEAD
 // importer les packages necessaires ici
+type Equipment struct {
+	// definir les equipements ici
+	Head string
+	Toros string
+	Legs string
+	Feet string
+	Hands string
+	Weapon string
+	Shield string
+}
+
+type Character struct {
+	// definir les attributs des personnages ici
+	Name       string
+	Class      string
+	Level      int
+	Gold	   int
+	Equipment  Equipment
+	Mana	   int
+	Spells     []string
+	MaxHP      int
+	HP         int
+	Defense	   int
+}
+
+type Monster struct {
+	// definir les attributs des monstres ici
+	Name  string
+	MaxHP int
+	HP    int
+	Attack int
+	Defense int
+	Speed int
+	Experience int
+	Loot []string
+}
 
 func initCharacter() {
 	// initialiser les personnages ici
@@ -51,8 +86,3 @@ func poisonPot() {
 func isDead() {
 	// verifier si le personnage est mort ici
 }
-=======
-func main() {
-
-}
->>>>>>> 05a8740c3d7f5eab67b1ebde230c322370898ece
