@@ -1,5 +1,14 @@
 package main
 
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"os/exec"
+
+	"golang.org/x/term"
+)
+
 // importer les packages necessaires ici
 type Equipment struct {
 	// definir les equipements ici
@@ -67,7 +76,44 @@ func initCharacter() {
 }
 
 func main() {
-	initCharacter()
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		clearScreen()
+		printIndented("=== MENU ===", 25)
+		printIndented("Bienvenue dans le jeu !", 20)
+		printIndented("1 - Option 1", 23)
+		printIndented("2 - Option 2", 23)
+		printIndented("3 - Quitter", 23)
+		fmt.Print("Choix : ")
+		scanner.Scan()
+		choix := scanner.Text()
+		switch choix {
+		case "1":
+			fmt.Println("Tu as choisi l'option 1")
+		case "2":
+			fmt.Println("Tu as choisi l'option 2")
+		case "3":
+			fmt.Println("Au revoir !")
+			return
+		default:
+			fmt.Println("Choix invalide.")
+		}
+		scanner.Scan()
+	}
+}
+// Affiche le texte centré dans le terminal
+func printCentered(text string) {
+	width, _, err := term.GetSize(int(os.Stdout.Fd()))
+	if err != nil || width <= len(text) {
+		fmt.Println(text)
+		return
+	}
+	padding := (width - len(text)) / 2
+	fmt.Printf("%s%s\n", spaces(padding), text)
+}
+
+func spaces(n int) string {
+	return fmt.Sprintf("%*s", n, "")
 }
 
 func characterCreation() {
@@ -115,7 +161,7 @@ func removeInventory() {
 	// retirer un objet de l'inventaire ici
 }
 
-func upgradeIventorySlot() {
+func upgradeInventorySlot() {
 	// augmenter la capacite maximale de l'inventaire ici
 }
 
@@ -131,4 +177,20 @@ func poisonPot() {
 
 func isDead() {
 	// verifier si le personnage est mort ici
+}
+
+func clearScreen() {
+    cmd := exec.Command("cmd", "/c", "cls")
+    cmd.Stdout = os.Stdout
+    cmd.Run()
+}
+
+func printCenteredLines(lines []string) {
+    for _, line := range lines {
+        printCentered(line)
+    }
+}
+
+func printIndented(text string, indent int) {
+    fmt.Printf("%s%s\n", spaces(indent), text)
 }
