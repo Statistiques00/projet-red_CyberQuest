@@ -49,7 +49,7 @@ type Monster struct {
 
 func initCharacter() {
 	// initialiser les personnages ici
-	_ = Character{
+	player = Character{
 		Name:  "Hero",
 		Class: "Warrior",
 		Level: 1,
@@ -129,7 +129,7 @@ func characterCreation() {
 		// set les stats
 	}
 }
-/*
+
 func displayInfo() {
 	// afficher les infos des personnages ici
 	println(player.Name)
@@ -143,7 +143,7 @@ func displayInfo() {
 	println(player.HP)
 	println(player.Defense)
 
-}*/
+}
 
 func accesInventory() {
 	// acceder a l'inventaire ici
