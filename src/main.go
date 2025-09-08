@@ -70,7 +70,17 @@ func main() {
 func characterCreation() {
 	// creer un personnage ici
 	// ne pas oublier les classes
-	// utiliser des switch case
+	// utiliser des switch cases
+	println("Quel est votre nom ?")
+	player.Name = scan(&player.Name)
+	println("Choisissez une classe parmi Overclockeur, Sysadmin et Netrunner")
+	switch scan(&player.Class) {
+	case "Overclockeur":
+		// set les stats
+	case "Sysadmin":
+		// set les stats
+	case "Netrunner":
+		// set les stats
 }
 
 func displayInfo() {
