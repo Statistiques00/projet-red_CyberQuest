@@ -9,7 +9,7 @@ func InitCharacter() {
 		Gold:  0,
 		Equipment: Equipment{
 			Head:   "Iron Helmet",
-			Toros:  "Iron Armor",
+			Torso:  "Iron Armor",
 			Legs:   "Iron Leggings",
 			Feet:   "Iron Boots",
 			Hands:  "Iron Gloves",
