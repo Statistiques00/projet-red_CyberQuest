@@ -10,7 +10,7 @@ import (
 type Equipment struct {
 	// definir les equipements ici
 	Head   string
-	Toros  string
+	Torso  string
 	Legs   string
 	Feet   string
 	Hands  string
@@ -29,6 +29,7 @@ type Character struct {
 	Spells    []string
 	MaxHP     int
 	HP        int
+	Inventory []string
 	Defense   int
 }
 
@@ -61,10 +62,9 @@ func main() {
 		choix := scanner.Text()
 		switch choix {
 		case "1":
-			DisplayInfo()
-			AddInventory()
+			player.DisplayInfo()
 		case "2":
-			fmt.Println("Tu as choisi l'option 2")
+			AccessInventory()
 		case "3":
 			fmt.Println("Au revoir !")
 			return
