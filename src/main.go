@@ -46,12 +46,19 @@ type Armes struct {
 }
 
 type Equipements struct {
+	// stuff Equipé
 	casque Casque
 	armure Armure
 	bottes Bottes
 	armes  Armes
 }
 
+type Spell struct {
+	nom         string
+	cost        int
+	description string
+	degats      int
+}
 type Character struct {
 	// definir les attributs des personnages ici
 	Name                  string
@@ -64,11 +71,11 @@ type Character struct {
 	vitesse_de_connection int //initiative
 	Energie               int //mana
 	Max_Energie           int //max mana
-	Spells                []string
 	MaxHP                 int
 	HP                    int
 	Inventory             []string
 	Equipements           Equipements
+	Spells                []Spell
 }
 
 type Monster struct {
@@ -86,6 +93,14 @@ type Monster struct {
 
 // Declare player as a package-level variable
 var player Character
+
+var Spells1 = Spell{
+	nom:         "Attaque basique",
+	cost:        0,
+	description: "Une attaque simple mais efficace.",
+	degats:      10,
+}
+
 var equipements = Equipements{
 	casque: Casque{
 		nom:                   "Casque de base",

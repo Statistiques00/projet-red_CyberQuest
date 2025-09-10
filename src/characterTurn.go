@@ -14,21 +14,33 @@ func CharacterTurn(player *Character, monster *Monster) {
 		var choix int
 		fmt.Scan(&choix)
 
-		if choix == 1 {
-			// Attaque basique
-			degats := 5
-			monster.HP -= degats
-			if monster.HP < 0 {
-				monster.HP = 0
+		switch choix {
+		case 1:
+			for i := range player.Spells {
+				fmt.Println(player.Spells[i])
 			}
-			fmt.Printf("%s utilise Attaque basique et inflige %d dégâts !\n", player.Name, degats)
+			var selec int
+			fmt.Printf("Choisissez un sort à utiliser (1-%d) : ", len(player.Spells))
+			fmt.Scan(&selec)
+			if selec < 1 || selec > len(player.Spells) {
+				fmt.Println("Choix invalide. Veuillez réessayer.")
+				continue
+			}
+			if player.Spells[selec-1].cost > player.Energie {
+				fmt.Println("Pas assez d'énergie pour lancer ce sort.")
+				continue
+			}
+			monster.HP -= player.Spells[selec-1].degats + player.puissance_de_calcul
+			player.Energie -= player.Spells[selec-1].cost
+
+			fmt.Printf("%s utilise %s et inflige %d dégâts !\n", player.Name, player.Spells[selec-1].nom, player.Spells[selec-1].degats)
 			fmt.Printf("PV restants du monstre : %d/%d\n", monster.HP, monster.MaxHP)
-			break // Fin du tour du joueur, passage au tour du monstre
-		} else if choix == 2 {
+		case 2:
 			fmt.Println("Ouverture de l'inventaire...")
-			// Ajoutez ici la logique d'inventaire
-		} else {
-			fmt.Println("Choix invalide. Veuillez réessayer.")
+			AccessInventory(player)
+			return
+				default:
+					fmt.Println("Choix invalide. Veuillez réessayer.")
+				}
+			}
 		}
-	}
-}
