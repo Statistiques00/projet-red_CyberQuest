@@ -8,42 +8,76 @@ import (
 
 func CharacterCreation() Character {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Print("Entrez votre nom : ")
-	scanner.Scan()
-	name := scanner.Text()
-	fmt.Println("Choisissez votre classe : 1 - Humain / 2 - Elfe / 3 - Nain")
+	ClearScreen()
+	fmt.Print(`
++===================================+ 
+|    === CREATION PERSONNAGE ===    | 
++===================================+ 
+| Entrez votre nom :`)
+scanner.Scan()
+name := scanner.Text()
+fmt.Print(`
++===================================+
+`)
+	ClearScreen()
+	fmt.Printf(`
++===================================+
+|    === CREATION PERSONNAGE ===    |
++===================================+
+| Entrez votre nom : %s%s|
++===================================+
+`, name, spaces(27-len(name))) // pour aligner le cadre
+
+	fmt.Print(`
++=================================+
+| Choisissez votre classe :       |
+|   1 - Humain  (HP:100 / Mana:30)|
+|   2 - Elfe    (HP: 80 / Mana:50)|
+|   3 - Nain    (HP:120 / Mana:20)|
++=================================+
+Classe : `)
+
 	class := ""
-	// maxHP := 0
-	// mana := 0
 	for {
-		fmt.Print("Classe : ")
 		scanner.Scan()
 		c := scanner.Text()
 		switch c {
 		case "1":
 			class = "Humain"
-			// maxHP = 100
-			// mana = 30
 		case "2":
 			class = "Elfe"
-			// maxHP = 80
-			// mana = 50
 		case "3":
 			class = "Nain"
-			// maxHP = 120
-			// mana = 20
 		default:
-			fmt.Println("Choix invalide.")
+			fmt.Print("Choix invalide. Réessayez : ")
 			continue
 		}
 		break
 	}
-	// fmt.Println("Bienvenue, ", name, "le", class, "!")
+
+	// Affichage du récapitulatif
+	ClearScreen()
+	fmt.Print(`
++===================================+
+|      RECAPITULATIF PERSONNAGE     |
++===================================+
+`)
+	fmt.Printf("| Nom    : %-25s |\n", name)
+	fmt.Printf("| Classe : %-25s |\n", class)
+	fmt.Println("+===================================+")
+	fmt.Print("\nAppuie sur Entrée pour continuer...")
+	scanner.Scan() // Attend que l'utilisateur appuie sur Entrée
+
 	return Character{
 		Name:  name,
 		Class: class,
-		// Uncomment and set these fields if needed:
-		// MaxHP: maxHP,
-		// Mana:  mana,
 	}
+}
+
+// Ajoute cette fonction utilitaire si tu ne l'as pas déjà
+func spaces(n int) string {
+	if n <= 0 {
+		return ""
+	}
+	return fmt.Sprintf("%*s", n, "")
 }

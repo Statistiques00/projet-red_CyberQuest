@@ -142,13 +142,18 @@ func main() {
 	player = CharacterCreation()
 	for {
 		ClearScreen()
-		PrintIndented("=== MENU ===", 25)
-		PrintIndented("Bienvenue dans le jeu !", 20)
-		PrintIndented("1 - Info", 23)
-		PrintIndented("2 - Option 2", 23)
-		PrintIndented("3 - Quitter", 23)
-		PrintIndented("4 - Marchand", 23)
-		fmt.Print("Choix : ")
+		fmt.Print(`
+		+===============================+
+		|    ===  MENU PRINCIPAL ===    |
+		+===============================+
+		| 1 - Infos personnage          |
+		| 2 - Inventaire                |
+		| 3 - Marchand                  |
+		| 4 - Forgeron                  |
+		| 5 - Entrainement              |
+		| 6 - Quitter                   |
+		+===============================+
+		Choix : `)
 		scanner.Scan()
 		choix := scanner.Text()
 		switch choix {
@@ -157,11 +162,11 @@ func main() {
 		case "2":
 			AccessInventory(&player)
 		case "3":
-			fmt.Println("Au revoir !")
-			return
-		case "4":
 			fmt.Println("Marchand")
 			marchand(&player)
+		case "4":
+			fmt.Println("Au revoir !")
+			return
 		default:
 			fmt.Println("Choix invalide.")
 		}
