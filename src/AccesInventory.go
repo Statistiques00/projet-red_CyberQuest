@@ -31,7 +31,7 @@ func AccessInventory(c *Character) {
 			scanner.Scan()
 			AddInventory(c, scanner.Text())
 		case "u":
-			//takePot(c)
+			TakePot(c)
 		case "q":
 			ClearScreen()
 			return

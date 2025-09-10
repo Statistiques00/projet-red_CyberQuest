@@ -5,7 +5,7 @@ import (
 )
 
 // Fonction qui simule le tour de jeu du joueur
-func CharacterTurn(player *Player, monster *Monster) {
+func CharacterTurn(player *Character, monster *Monster) {
 	for {
 		fmt.Println("Menu de combat :")
 		fmt.Println("1. Attaquer")
@@ -14,19 +14,31 @@ func CharacterTurn(player *Player, monster *Monster) {
 		var choix int
 		fmt.Scan(&choix)
 
-		if choix == 1 {
-			// Attaque basique
-			degats := 5
-			monster.HP -= degats
-			if monster.HP < 0 {
-				monster.HP = 0
+		switch choix {
+		case "1":
+			for i := range player.Spells {
+				fmt.Println(player.Spells[i], "\n")
 			}
-			fmt.Printf("%s utilise Attaque basique et inflige %d dégâts !\n", player.Name, degats)
+			printf("Choisissez un sort à utiliser (1-%d) : ", len(player.Spells))
+			fmt.Scan(&selec)
+			if selec < 1 || selec > len(player.Spells) {
+				fmt.Println("Choix invalide. Veuillez réessayer.")
+				continue
+			}
+			if player.Spells[selec-1].cost > player.Energie {
+				fmt.Println("Pas assez d'énergie pour lancer ce sort.")
+				continue
+			}
+			monster.hp -= player.Spells[selec-1].degats + player.puissance_de_calcul
+			player.Energie -= player.Spells[selec-1].cost
+
+			monster.HP -= player.puissance_de_calcul
+			fmt.Printf("%s utilise %s et inflige %d dégâts !\n", player.Name, player.Spells[selec-1].nom, player.Spells[selec-1].degats)
 			fmt.Printf("PV restants du monstre : %d/%d\n", monster.HP, monster.MaxHP)
-			break // Fin du tour du joueur, passage au tour du monstre
+			break 
 		} else if choix == 2 {
 			fmt.Println("Ouverture de l'inventaire...")
-			// Ajoutez ici la logique d'inventaire
+			return AccessInventory(player)
 		} else {
 			fmt.Println("Choix invalide. Veuillez réessayer.")
 		}
