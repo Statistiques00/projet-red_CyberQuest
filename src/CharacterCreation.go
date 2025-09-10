@@ -13,28 +13,34 @@ func CharacterCreation() Character {
 +===================================+ 
 |    === CREATION PERSONNAGE ===    | 
 +===================================+ 
-| Entrez votre nom :`)
-scanner.Scan()
-name := scanner.Text()
-fmt.Print(`
+| Entrez votre nom : 		    |
 +===================================+
-`)
+`) 
+
+	fmt.Print("\033[2A") // Remonte d'une ligne
+	fmt.Print("\033[21C") // Avance de 21 colonnes (après "Entrez votre nom : ")
+
+	scanner.Scan()
+	name := scanner.Text()
+
+	// Affiche la suite avec le nom saisi
 	ClearScreen()
-	fmt.Printf(`
+const cadreLargeur = 35
+fmt.Printf(`
 +===================================+
 |    === CREATION PERSONNAGE ===    |
 +===================================+
-| Entrez votre nom : %s%s|
+| Entrez votre nom : %-*s|
 +===================================+
-`, name, spaces(27-len(name))) // pour aligner le cadre
+`, cadreLargeur-len(" Entrez votre nom : "), name)
 
 	fmt.Print(`
-+=================================+
-| Choisissez votre classe :       |
-|   1 - Humain  (HP:100 / Mana:30)|
-|   2 - Elfe    (HP: 80 / Mana:50)|
-|   3 - Nain    (HP:120 / Mana:20)|
-+=================================+
++===================================+
+|  Choisissez votre classe :        |
+|    1 - Humain  (HP:100 / Mana:30) |
+|    2 - Elfe    (HP: 80 / Mana:50) |
+|    3 - Nain    (HP:120 / Mana:20) |
++===================================+
 Classe : `)
 
 	class := ""
@@ -62,8 +68,8 @@ Classe : `)
 |      RECAPITULATIF PERSONNAGE     |
 +===================================+
 `)
-	fmt.Printf("| Nom    : %-25s |\n", name)
-	fmt.Printf("| Classe : %-25s |\n", class)
+	fmt.Printf("| Nom    : %-25s|\n", name)
+	fmt.Printf("| Classe : %-25s|\n", class)
 	fmt.Println("+===================================+")
 	fmt.Print("\nAppuie sur Entrée pour continuer...")
 	scanner.Scan() // Attend que l'utilisateur appuie sur Entrée
@@ -74,7 +80,7 @@ Classe : `)
 	}
 }
 
-// Ajoute cette fonction utilitaire si tu ne l'as pas déjà
+// Fonction utilitaire pour l'alignement
 func spaces(n int) string {
 	if n <= 0 {
 		return ""

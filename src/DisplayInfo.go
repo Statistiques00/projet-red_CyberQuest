@@ -1,8 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func (c *Character) DisplayInfo() {
+	ClearScreen()
 	// Sprite + Infos générales alignées à droite
 	fmt.Println()
 	fmt.Println("   ( O )       Name  :", c.Name)
@@ -29,4 +34,6 @@ func (c *Character) DisplayInfo() {
 	fmt.Printf(" - Torse: %v\n", c.Equipements.armure)
 	fmt.Printf(" - Pieds: %v\n", c.Equipements.bottes)
 	fmt.Printf(" - Arme : %v\n", c.Equipements.armes)
+fmt.Print("\nAppuie sur Entrée pour continuer...")
+    bufio.NewReader(os.Stdin).ReadBytes('\n')
 }

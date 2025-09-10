@@ -7,6 +7,7 @@ import (
 )
 
 func AccessInventory(c *Character) {
+	ClearScreen()
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		PrintIndented("=== INVENTAIRE ===", 25)
@@ -42,7 +43,7 @@ func AccessInventory(c *Character) {
 			scanner.Scan()
 			ClearScreen()
 		case "q":
-			ClearScreen()
+			
 			return
 		default:
 			fmt.Println("Choix invalide.")
