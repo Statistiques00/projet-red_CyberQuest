@@ -146,6 +146,7 @@ func main() {
 		PrintIndented("1 - Info", 23)
 		PrintIndented("2 - Option 2", 23)
 		PrintIndented("3 - Quitter", 23)
+		PrintIndented("4 - Marchand", 23)
 		fmt.Print("Choix : ")
 		scanner.Scan()
 		choix := scanner.Text()
@@ -157,6 +158,9 @@ func main() {
 		case "3":
 			fmt.Println("Au revoir !")
 			return
+		case "4":
+			fmt.Println("Marchand")
+			marchand(&player)
 		default:
 			fmt.Println("Choix invalide.")
 		}
