@@ -17,7 +17,7 @@ func CharacterTurn(player *Character, monster *Monster) {
 		switch choix {
 		case 1:
 			for i := range player.Spells {
-				fmt.Println(player.Spells[i], "\n")
+				fmt.Println(player.Spells[i])
 			}
 			var selec int
 			fmt.Printf("Choisissez un sort à utiliser (1-%d) : ", len(player.Spells))
