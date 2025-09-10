@@ -40,11 +40,11 @@ func ForgeronMenu(playerGold *int, inventory *[]string) {
 		fmt.Println("+=========================================+")
 		fmt.Println("|            === FORGERON ===             |")
 		fmt.Println("+=========================================+")
-		fmt.Printf("| Or : %-34d|\n", *playerGold)
+		fmt.Printf("| BTC : %-34d|\n", *playerGold)
 		fmt.Println("+=========================================+")
-		fmt.Println("| 1 - Améliorer une arme   (20 Or)        |")
-		fmt.Println("| 2 - Améliorer une armure (15 Or)        |")
-		fmt.Println("| 3 - Réparer un objet     (10 Or)        |")
+		fmt.Println("| 1 - Améliorer une arme   (20 BTC)        |")
+		fmt.Println("| 2 - Améliorer une armure (15 BTC)        |")
+		fmt.Println("| 3 - Réparer un objet     (10 BTC)        |")
 		fmt.Println("| q - Quitter le forgeron                 |")
 		fmt.Println("+=========================================+")
 		fmt.Print("Choix : ")
@@ -56,7 +56,7 @@ func ForgeronMenu(playerGold *int, inventory *[]string) {
 				*playerGold -= 20
 				fmt.Println("| Arme améliorée !                        |")
 			} else {
-				fmt.Println("| Pas assez d'or !                        |")
+				fmt.Println("| Pas assez de BTC !                      |")
 			}
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()
@@ -65,7 +65,7 @@ func ForgeronMenu(playerGold *int, inventory *[]string) {
 				*playerGold -= 15
 				fmt.Println("| Armure améliorée !                      |")
 			} else {
-				fmt.Println("| Pas assez d'or !                        |")
+				fmt.Println("| Pas assez de BTC !                      |")
 			}
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()
@@ -74,7 +74,7 @@ func ForgeronMenu(playerGold *int, inventory *[]string) {
 				*playerGold -= 10
 				fmt.Println("| Objet réparé !                          |")
 			} else {
-				fmt.Println("| Pas assez d'or !                        |")
+				fmt.Println("| Pas assez de BTC !                      |")
 			}
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()

@@ -168,8 +168,18 @@ func main() {
 			fmt.Println("Forgeron")
 			ForgeronMenu(&player.BTC, &player.Inventory)
 		case "5":
-			fmt.Println("Entrainement")
-			//Training(&player)
+			trainingMonster := Monster{
+				Name:       "Ennemi d'entraînement",
+				MaxHP:      30,
+				HP:         30,
+				Attack:     5,
+				Defense:    2,
+				Speed:      3,
+				Experience: 10,
+				Loot:       []string{},
+				BTC:        0,
+			}
+			TrainingFight(&player, trainingMonster)
 		case "6":
 			fmt.Println("Au revoir !")
 			return
