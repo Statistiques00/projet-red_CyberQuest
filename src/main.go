@@ -165,6 +165,12 @@ func main() {
 			fmt.Println("Marchand")
 			AccessMarchand(&player)
 		case "4":
+			fmt.Println("Forgeron")
+			ForgeronMenu(&player.BTC, &player.Inventory)
+		case "5":
+			fmt.Println("Entrainement")
+			//Training(&player)
+		case "6":
 			fmt.Println("Au revoir !")
 			return
 		default:
