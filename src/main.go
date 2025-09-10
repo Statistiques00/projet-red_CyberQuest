@@ -163,7 +163,7 @@ func main() {
 			AccessInventory(&player)
 		case "3":
 			fmt.Println("Marchand")
-			marchand(&player)
+			AccessMarchand(&player)
 		case "4":
 			fmt.Println("Au revoir !")
 			return
