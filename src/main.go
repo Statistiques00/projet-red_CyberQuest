@@ -81,6 +81,7 @@ type Monster struct {
 	Speed      int
 	Experience int
 	Loot       []string
+	BTC        int
 }
 
 // Declare player as a package-level variable
@@ -122,11 +123,12 @@ var equipements = Equipements{
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
+	player = CharacterCreation()
 	for {
 		ClearScreen()
 		PrintIndented("=== MENU ===", 25)
 		PrintIndented("Bienvenue dans le jeu !", 20)
-		PrintIndented("1 - Option 1", 23)
+		PrintIndented("1 - Info", 23)
 		PrintIndented("2 - Option 2", 23)
 		PrintIndented("3 - Quitter", 23)
 		fmt.Print("Choix : ")

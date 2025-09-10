@@ -4,15 +4,8 @@ import (
 	"fmt"
 )
 
-// Exemple de structure Player
-type Player struct {
-	HP        int
-	MaxHP     int
-	Inventory []string
-}
-
 // Fonction pour utiliser une potion
-func TakePot(p *Player) {
+func TakePot(p *Character) {
 	potionIndex := -1
 	for i, item := range p.Inventory {
 		if item == "potion" {
