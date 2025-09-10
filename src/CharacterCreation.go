@@ -6,27 +6,44 @@ import (
 	"os"
 )
 
-func CharacterCreation() {
-	// creer un personnage ici
-	// ne pas oublier les classes
-	// utiliser des switch cases
+func CharacterCreation() Character {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("Quel est votre nom ?")
-	if scanner.Scan() {
-		player.Name = scanner.Text()
+	fmt.Print("Entrez votre nom : ")
+	scanner.Scan()
+	name := scanner.Text()
+	fmt.Println("Choisissez votre classe : 1 - Humain / 2 - Elfe / 3 - Nain")
+	class := ""
+	// maxHP := 0
+	// mana := 0
+	for {
+		fmt.Print("Classe : ")
+		scanner.Scan()
+		c := scanner.Text()
+		switch c {
+		case "1":
+			class = "Humain"
+			// maxHP = 100
+			// mana = 30
+		case "2":
+			class = "Elfe"
+			// maxHP = 80
+			// mana = 50
+		case "3":
+			class = "Nain"
+			// maxHP = 120
+			// mana = 20
+		default:
+			fmt.Println("Choix invalide.")
+			continue
+		}
+		break
 	}
-	fmt.Println("Choisissez une classe parmi Overclockeur, Sysadmin et Netrunner")
-	var class string
-	if scanner.Scan() {
-		class = scanner.Text()
-		player.Class = class
-	}
-	switch class {
-	case "Overclockeur":
-		// set les stats
-	case "Sysadmin":
-		// set les stats
-	case "Netrunner":
-		// set les stats
+	// fmt.Println("Bienvenue, ", name, "le", class, "!")
+	return Character{
+		Name:  name,
+		Class: class,
+		// Uncomment and set these fields if needed:
+		// MaxHP: maxHP,
+		// Mana:  mana,
 	}
 }
