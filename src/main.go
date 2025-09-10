@@ -76,6 +76,7 @@ type Character struct {
 	Inventory             []string
 	Equipements           Equipements
 	Spells                []Spell
+	MaxInventory          int
 }
 
 type Monster struct {
