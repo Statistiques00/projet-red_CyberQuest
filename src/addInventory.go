@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func (c *Character) AddInventory(item string) {
+func AddInventory(c *Character, item string) {
 	if len(c.Inventory) >= 10 {
 		fmt.Println("L'inventaire est plein")
 		return

@@ -16,6 +16,7 @@ type Equipment struct {
 	Hands  string
 	Weapon string
 	Shield string
+	Loot   []string
 }
 
 type Character struct {
@@ -31,6 +32,7 @@ type Character struct {
 	HP        int
 	Inventory []string
 	Defense   int
+	Loot	  []string
 }
 
 type Monster struct {
@@ -64,7 +66,7 @@ func main() {
 		case "1":
 			player.DisplayInfo()
 		case "2":
-			AccessInventory()
+			AccessInventory(&player)
 		case "3":
 			fmt.Println("Au revoir !")
 			return
