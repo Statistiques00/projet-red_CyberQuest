@@ -7,7 +7,7 @@ import (
 // Supposons que l'inventaire est un slice de string dans le personnage
 func takePot() {
 	potionIndex := -1
-	for i, item := range player.Equipment.Loot {
+	for i, item := range player.Inventory {
 		if item == "Potion" {
 			potionIndex = i
 			break
@@ -19,7 +19,7 @@ func takePot() {
 	}
 
 	// Supprimer la potion
-	player.Equipment.Loot = append(player.Equipment.Loot[:potionIndex], player.Equipment.Loot[potionIndex+1:]...)
+	player.Inventory = append(player.Inventory[:potionIndex], player.Inventory[potionIndex+1:]...)
 
 	// Soigner le joueur
 	player.HP += 50

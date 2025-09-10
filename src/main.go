@@ -7,32 +7,68 @@ import (
 )
 
 // importer les packages necessaires ici
-type Equipment struct {
+type Casque struct {
+	nom                   string
+	firewall              int
+	puissance_de_calcul   int
+	stability             int
+	vitesse_de_connection int
+	valeur                int
+
 	// definir les equipements ici
-	Head   string
-	Torso  string
-	Legs   string
-	Feet   string
-	Hands  string
-	Weapon string
-	Shield string
-	Loot   []string
+}
+
+type Armure struct {
+	nom                   string
+	firewall              int
+	puissance_de_calcul   int
+	stability             int
+	vitesse_de_connection int
+	valeur                int
+}
+
+type Bottes struct {
+	nom                   string
+	firewall              int
+	puissance_de_calcul   int
+	stability             int
+	vitesse_de_connection int
+	valeur                int
+}
+
+type Armes struct {
+	nom                   string
+	firewall              int
+	puissance_de_calcul   int
+	stability             int
+	vitesse_de_connection int
+	valeur                int
+}
+
+type Equipements struct {
+	casque Casque
+	armure Armure
+	bottes Bottes
+	armes  Armes
 }
 
 type Character struct {
 	// definir les attributs des personnages ici
-	Name      string
-	Class     string
-	Level     int
-	Gold      int
-	Equipment Equipment
-	Mana      int
-	Spells    []string
-	MaxHP     int
-	HP        int
-	Inventory []string
-	Defense   int
-	Loot	  []string
+	Name                  string
+	Class                 string
+	Level                 int
+	BTC                   int
+	puissance_de_calcul   int //attaque
+	firewall              int //defense
+	stability             int //tx critique
+	vitesse_de_connection int //initiative
+	Energie               int //mana
+	Max_Energie           int //max mana
+	Spells                []string
+	MaxHP                 int
+	HP                    int
+	Inventory             []string
+	Equipements           Equipements
 }
 
 type Monster struct {
@@ -49,6 +85,40 @@ type Monster struct {
 
 // Declare player as a package-level variable
 var player Character
+var equipements = Equipements{
+	casque: Casque{
+		nom:                   "Casque de base",
+		firewall:              5,
+		puissance_de_calcul:   0,
+		stability:             0,
+		vitesse_de_connection: 0,
+		valeur:                10,
+	},
+	armure: Armure{
+		nom:                   "Armure de base",
+		firewall:              15,
+		puissance_de_calcul:   0,
+		stability:             0,
+		vitesse_de_connection: -1,
+		valeur:                30,
+	},
+	bottes: Bottes{
+		nom:                   "Bottes de base",
+		firewall:              5,
+		puissance_de_calcul:   0,
+		stability:             0,
+		vitesse_de_connection: 2,
+		valeur:                20,
+	},
+	armes: Armes{
+		nom:                   "Epée de base",
+		firewall:              0,
+		puissance_de_calcul:   10,
+		stability:             5,
+		vitesse_de_connection: 0,
+		valeur:                25,
+	},
+}
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
