@@ -9,9 +9,9 @@ import (
 func AccessInventory(c *Character) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
-		fmt.Println("\n--- INVENTAIRE ---")
+		PrintCentered("\n--- INVENTAIRE ---")
 		if len(c.Inventory) == 0 {
-			fmt.Println("Inventaire vide.")
+			PrintCentered("Inventaire vide.")
 		} else {
 			for i, item := range c.Inventory {
 				fmt.Printf("%d : %s\n", i+1, item)
