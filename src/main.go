@@ -6,7 +6,6 @@ import (
 	"os"
 )
 
-// importer les packages necessaires ici
 type Casque struct {
 	nom                   string
 	firewall              int
@@ -14,8 +13,6 @@ type Casque struct {
 	stability             int
 	vitesse_de_connection int
 	valeur                int
-
-	// definir les equipements ici
 }
 
 type Armure struct {
@@ -46,7 +43,6 @@ type Armes struct {
 }
 
 type Equipements struct {
-	// stuff Equipé
 	casque Casque
 	armure Armure
 	bottes Bottes
@@ -60,7 +56,6 @@ type Spell struct {
 	degats      int
 }
 type Character struct {
-	// definir les attributs des personnages ici
 	Name                  string
 	Class                 string
 	Level                 int
@@ -142,13 +137,18 @@ func main() {
 	player = CharacterCreation()
 	for {
 		ClearScreen()
-		PrintIndented("=== MENU ===", 25)
-		PrintIndented("Bienvenue dans le jeu !", 20)
-		PrintIndented("1 - Info", 23)
-		PrintIndented("2 - Option 2", 23)
-		PrintIndented("3 - Quitter", 23)
-		PrintIndented("4 - Marchand", 23)
-		fmt.Print("Choix : ")
+		fmt.Print(`
+		+===============================+
+		|    ===  MENU PRINCIPAL ===    |
+		+===============================+
+		| 1 - Infos personnage          |
+		| 2 - Inventaire                |
+		| 3 - Marchand                  |
+		| 4 - Forgeron                  |
+		| 5 - Entrainement              |
+		| 6 - Quitter                   |
+		+===============================+
+		Choix : `)
 		scanner.Scan()
 		choix := scanner.Text()
 		switch choix {
@@ -157,11 +157,27 @@ func main() {
 		case "2":
 			AccessInventory(&player)
 		case "3":
+			fmt.Println("Marchand")
+			AccessMarchand(&player)
+		case "4":
+			fmt.Println("Forgeron")
+			ForgeronMenu(&player.BTC, &player.Inventory)
+		case "5":
+			trainingMonster := Monster{
+				Name:       "Ennemi d'entraînement",
+				MaxHP:      30,
+				HP:         30,
+				Attack:     5,
+				Defense:    2,
+				Speed:      3,
+				Experience: 10,
+				Loot:       []string{},
+				BTC:        0,
+			}
+			TrainingFight(&player, trainingMonster)
+		case "6":
 			fmt.Println("Au revoir !")
 			return
-		case "4":
-			fmt.Println("Marchand")
-			marchand(&player)
 		default:
 			fmt.Println("Choix invalide.")
 		}
