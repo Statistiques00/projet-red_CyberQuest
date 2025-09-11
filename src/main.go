@@ -6,7 +6,6 @@ import (
 	"os"
 )
 
-// importer les packages necessaires ici
 type Casque struct {
 	nom                   string
 	firewall              int
@@ -14,8 +13,6 @@ type Casque struct {
 	stability             int
 	vitesse_de_connection int
 	valeur                int
-
-	// definir les equipements ici
 }
 
 type Armure struct {
@@ -46,7 +43,6 @@ type Armes struct {
 }
 
 type Equipements struct {
-	// stuff Equipé
 	casque Casque
 	armure Armure
 	bottes Bottes
@@ -60,7 +56,6 @@ type Spell struct {
 	degats      int
 }
 type Character struct {
-	// definir les attributs des personnages ici
 	Name                  string
 	Class                 string
 	Level                 int
