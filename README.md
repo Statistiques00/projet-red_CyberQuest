@@ -5,12 +5,17 @@ Incarnez un **hacker-avatars** dans un univers numérique corrompu par des IA ho
 
 ## Fonctionnalités
 
-
-## Structure du Projet
-```
-A FAIRE A LA FIN
-        
-```
+- **Création de personnage** : Choisissez un nom et une classe (Humain, Elfe, Nain), chaque classe ayant ses propres caractéristiques.
+- **Menu principal interactif** : Naviguez facilement entre les différentes actions du jeu.
+- **Inventaire** : Ajoutez, retirez et utilisez des objets, avec affichage stylisé en ASCII.
+- **Équipement** : Gérez casque, armure, bottes, armes et améliorez vos statistiques.
+- **Marchand** : Achetez ou vendez des objets pour améliorer votre équipement.
+- **Forgeron** : Améliorez ou réparez vos armes et armures.
+- **Entraînement** : Affrontez des monstres pour gagner de l'expérience et progresser.
+- **Système de combat** : Combat tour par tour contre des IA hostiles.
+- **Affichage immersif** : Menus et informations présentés sous forme de cadres ASCII.
+- **Gestion de l'or (BTC)** : Achetez, vendez et améliorez grâce à la monnaie du jeu.
+- **Progression du personnage** : Gagnez des niveaux, améliorez vos compétences et débloquez de nouveaux sorts.
 
 ## Prérequis
 
@@ -38,7 +43,8 @@ Optionnel :
 ## Utilisation
 
 1. Lancez l'application
-``go run /src/main.go``
+``cd /src/``
+``go run .``
 2. Accédez au terminal de commande pour accéder aux fonctionnalités
 
 ## Contribution
@@ -47,5 +53,3 @@ Les contributions sont les bienvenues ! Veuillez soumettre une pull request ou o
 ## Licence
 
 Ce projet est sous licence MIT. Consultez le fichier ``LICENSE`` pour plus d'informations.
-
-POUR REGLER LE PROBLEME DE ROBIN
