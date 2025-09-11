@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func (c *Character) DisplayInfo() {
+func DisplayInfo(c *Character) {
 	ClearScreen()
 	// Sprite + Infos générales alignées à droite
 	fmt.Println()
@@ -34,6 +34,6 @@ func (c *Character) DisplayInfo() {
 	fmt.Printf(" - Torse: %v\n", c.Equipements.armure)
 	fmt.Printf(" - Pieds: %v\n", c.Equipements.bottes)
 	fmt.Printf(" - Arme : %v\n", c.Equipements.armes)
-fmt.Print("\nAppuie sur Entrée pour continuer...")
-    bufio.NewReader(os.Stdin).ReadBytes('\n')
+	fmt.Print("\nAppuie sur Entrée pour continuer...")
+	bufio.NewReader(os.Stdin).ReadBytes('\n')
 }

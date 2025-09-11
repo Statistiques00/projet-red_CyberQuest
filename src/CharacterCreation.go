@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func CharacterCreation() Character {
+func CharacterCreation() {
 	scanner := bufio.NewScanner(os.Stdin)
 	ClearScreen()
 	fmt.Print(`
@@ -15,9 +15,9 @@ func CharacterCreation() Character {
 +===================================+ 
 | Entrez votre nom : 		    |
 +===================================+
-`) 
+`)
 
-	fmt.Print("\033[2A") // Remonte d'une ligne
+	fmt.Print("\033[2A")  // Remonte d'une ligne
 	fmt.Print("\033[21C") // Avance de 21 colonnes (après "Entrez votre nom : ")
 
 	scanner.Scan()
@@ -25,8 +25,8 @@ func CharacterCreation() Character {
 
 	// Affiche la suite avec le nom saisi
 	ClearScreen()
-const cadreLargeur = 35
-fmt.Printf(`
+	const cadreLargeur = 35
+	fmt.Printf(`
 +===================================+
 |    === CREATION PERSONNAGE ===    |
 +===================================+
@@ -35,30 +35,32 @@ fmt.Printf(`
 `, cadreLargeur-len(" Entrez votre nom : "), name)
 
 	fmt.Print(`
-+===================================+
-|  Choisissez votre classe :        |
-|    1 - Humain  (HP:100 / Mana:30) |
-|    2 - Elfe    (HP: 80 / Mana:50) |
-|    3 - Nain    (HP:120 / Mana:20) |
-+===================================+
++==========================================+
+|  Choisissez votre classe :               |
+|    1 - Overclocker  (HP:100 / Mana:30)   |
+|    2 - Sysadmin   (HP: 80 / Mana:50)     |
+|    3 - Netrunner   (HP:120 / Mana:20)    |
++==========================================+
 Classe : `)
 
 	class := ""
-	for {
-		scanner.Scan()
-		c := scanner.Text()
-		switch c {
-		case "1":
-			class = "Humain"
-		case "2":
-			class = "Elfe"
-		case "3":
-			class = "Nain"
-		default:
-			fmt.Print("Choix invalide. Réessayez : ")
-			continue
-		}
-		break
+
+	scanner.Scan()
+	c := scanner.Text()
+	switch c {
+	case "1":
+		class = "Overclocker"
+		InitCharacter(rune('1'))
+	case "2":
+		class = "SysAdmin"
+		InitCharacter(rune('2'))
+	case "3":
+		class = "Netrunner"
+		InitCharacter(rune('3'))
+
+	default:
+		fmt.Print("Choix invalide. Réessayez : ")
+
 	}
 
 	// Affichage du récapitulatif
@@ -74,10 +76,6 @@ Classe : `)
 	fmt.Print("\nAppuie sur Entrée pour continuer...")
 	scanner.Scan() // Attend que l'utilisateur appuie sur Entrée
 
-	return Character{
-		Name:  name,
-		Class: class,
-	}
 }
 
 // Fonction utilitaire pour l'alignement

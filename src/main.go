@@ -94,7 +94,14 @@ var Spells1 = Spell{
 	nom:         "Attaque basique",
 	cost:        0,
 	description: "Une attaque simple mais efficace.",
-	degats:      10,
+	degats:      2,
+}
+
+var Spells2 = Spell{
+	nom:         "Attaque puissante",
+	cost:        10,
+	description: "Une attaque qui inflige plus de dégâts.",
+	degats:      5,
 }
 
 var equipements = Equipements{
@@ -134,7 +141,7 @@ var equipements = Equipements{
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	player = CharacterCreation()
+	CharacterCreation()
 	for {
 		ClearScreen()
 		fmt.Print(`
@@ -153,9 +160,9 @@ func main() {
 		choix := scanner.Text()
 		switch choix {
 		case "1":
-			player.DisplayInfo()
+			DisplayInfo(&player)
 		case "2":
-			AccessInventory(&player)
+			AccessInventory(player)
 		case "3":
 			fmt.Println("Marchand")
 			AccessMarchand(&player)
@@ -174,7 +181,7 @@ func main() {
 				Loot:       []string{},
 				BTC:        0,
 			}
-			TrainingFight(&player, trainingMonster)
+			TrainingFight(player, trainingMonster, 1)
 		case "6":
 			fmt.Println("Au revoir !")
 			return

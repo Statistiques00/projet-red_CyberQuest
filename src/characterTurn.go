@@ -37,7 +37,7 @@ func CharacterTurn(player *Character, monster *Monster) {
 			fmt.Printf("PV restants du monstre : %d/%d\n", monster.HP, monster.MaxHP)
 		case 2:
 			fmt.Println("Ouverture de l'inventaire...")
-			AccessInventory(player)
+			AccessInventory(*player)
 			return
 				default:
 					fmt.Println("Choix invalide. Veuillez réessayer.")
