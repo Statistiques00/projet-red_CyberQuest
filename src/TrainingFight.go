@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// Fonction qui lance un combat d'entraînement tour par tour
 func TrainingFight(player Character, monster Monster, tour int) {
     ClearScreen()
     fmt.Println("+=========================================+")
