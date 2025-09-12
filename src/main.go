@@ -83,17 +83,15 @@ type Monster struct {
 	Defense    int
 	Speed      int
 	Experience int
-	LootTable  []LootItem // Table de loot avec probabilités
+	LootTable  []LootItem 
 	BTC        int
 }
 
-// Structure pour un objet de loot avec probabilité
 type LootItem struct {
 	Name       string
-	DropChance float64 // Probabilité de drop (0.0 à 1.0)
+	DropChance float64 
 }
 
-// Declare player as a package-level variable
 var player Character
 
 var Spells1 = Spell{
