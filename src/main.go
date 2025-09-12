@@ -83,8 +83,14 @@ type Monster struct {
 	Defense    int
 	Speed      int
 	Experience int
-	Loot       []string
+	LootTable  []LootItem // Table de loot avec probabilités
 	BTC        int
+}
+
+// Structure pour un objet de loot avec probabilité
+type LootItem struct {
+	Name       string
+	DropChance float64 // Probabilité de drop (0.0 à 1.0)
 }
 
 // Declare player as a package-level variable
@@ -178,7 +184,7 @@ func main() {
 				Defense:    2,
 				Speed:      3,
 				Experience: 10,
-				Loot:       []string{},
+				LootTable:  []LootItem{},
 				BTC:        0,
 			}
 			TrainingFight(player, trainingMonster, 1)
