@@ -60,6 +60,7 @@ type Character struct {
 	Class                 string
 	Level                 int
 	BTC                   int
+	Statut                int
 	puissance_de_calcul   int //attaque
 	firewall              int //defense
 	stability             int //tx critique
@@ -79,17 +80,18 @@ type Monster struct {
 	Name       string
 	MaxHP      int
 	HP         int
+	Poisoned   int
 	Attack     int
 	Defense    int
 	Speed      int
 	Experience int
-	LootTable  []LootItem 
+	LootTable  []LootItem
 	BTC        int
 }
 
 type LootItem struct {
 	Name       string
-	DropChance float64 
+	DropChance float64
 }
 
 var player Character

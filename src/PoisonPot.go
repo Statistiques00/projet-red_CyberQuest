@@ -2,18 +2,20 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func PoisonPot(target *Monster) {
-	for i := 0; i < 3; i++ {
-		target.HP -= 10
-		if target.HP < 0 {
-			target.HP = 0
+	for i, c := range player.Inventory {
+		if c == "Potion de poison" {
+			fmt.Println("+=========================================+")
+			fmt.Printf("| %s est empoisonné pendant 3 tours !      |\n", target.Name)
+			fmt.Println("+=========================================+")
+			target.Poisoned = 3
+			player.Inventory = append(player.Inventory[:i], player.Inventory[i+1:]...)
+			return
 		}
-		fmt.Printf("PV: %d/%d\n", target.HP, target.MaxHP)
-		time.Sleep(1 * time.Second)
 	}
+	fmt.Println("Vous n'avez pas de potion de poison dans votre inventaire.")
 }
 
 // Ajout de la potion de poison dans le marchand

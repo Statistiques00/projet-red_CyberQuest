@@ -5,7 +5,7 @@ import (
 )
 
 // Fonction qui simule le tour de jeu du joueur
-func CharacterTurn(player *Character, monster *Monster) {
+func CharacterTurn(player Character, monster *Monster) {
 	for {
 		fmt.Println()
 		fmt.Println()
@@ -13,7 +13,7 @@ func CharacterTurn(player *Character, monster *Monster) {
 		fmt.Println("|             MENU DE COMBAT              |")
 		fmt.Println("+=========================================+")
 		fmt.Println("| 1 - Attaquer                            |")
-		fmt.Println("| 2 - Inventaire                          |")
+		fmt.Println("| 2 - Potion                              |")
 		fmt.Println("+=========================================+")
 		fmt.Print("Choisissez une action : ")
 		var choix int
@@ -54,7 +54,25 @@ func CharacterTurn(player *Character, monster *Monster) {
 			fmt.Scanln()
 			return
 		case 2:
-			AccessInventory(*player)
+			ClearScreen()
+			println("+=========================================+")
+			println("|               1 - Poison                |")
+			println("|               2 - Heal                  |")
+			println("+=========================================+")
+			var potionChoice int
+			fmt.Print("Choisissez une potion à utiliser : ")
+			fmt.Scan(&potionChoice)
+			switch potionChoice {
+			case 1:
+				PoisonPot(monster)
+			case 2:
+				TakePot(&player)
+			default:
+				fmt.Println("| Choix invalide. Veuillez réessayer.     |")
+				fmt.Print("Appuie sur Entrée pour continuer...")
+				fmt.Scanln()
+				continue
+			}
 			return
 		default:
 			fmt.Println("| Choix invalide. Veuillez réessayer.     |")
