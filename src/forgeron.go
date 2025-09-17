@@ -8,7 +8,7 @@ import (
 
 var MaxInventoryCapacity1 int = 20 // à adapter selon votre gestion
 
-func hasMaterials(inventory *[]string, required []string) bool {
+func HasMaterials(inventory *[]string, required []string) bool {
 	inv := make(map[string]int)
 	for _, item := range *inventory {
 		inv[item]++
@@ -22,7 +22,7 @@ func hasMaterials(inventory *[]string, required []string) bool {
 	return true
 }
 
-func removeMaterials(inventory *[]string, required []string) {
+func RemoveMaterials(inventory *[]string, required []string) {
 	for _, mat := range required {
 		for i, item := range *inventory {
 			if item == mat {
@@ -34,6 +34,50 @@ func removeMaterials(inventory *[]string, required []string) {
 }
 
 func ForgeronMenu(playerGold *int, inventory *[]string) {
+	fmt.Println("Menu Forgeron 😊")
+	fmt.Println("1. Lunettes anti-lumière bleue")
+	fmt.Println("2. Blindage électromagnétique")
+	fmt.Println("3. Chaussures connectées IoT")
+	fmt.Println("4. Quitter")
+	var choix int
+	fmt.Scan(&choix)
+
+	if choix == 4 {
+	}
+
+	if len(*inventory) >= MaxInventoryCapacity1 {
+		fmt.Println("Inventaire plein !")
+	}
+
+	if *playerGold < 5 {
+		fmt.Println("Pas assez d'or !")
+	}
+
+	var item string
+	var required []string
+	switch choix {
+	case 1:
+		item = "Lunettes anti-lumière bleue"
+		required = []string{"verre spécial", "isolant plastique", "monture légère"}
+	case 2:
+		item = "Blindage électromagnétique"
+		required = []string{"plaque métallique", "isolant plastique", "alimentation haute capacité"}
+	case 3:
+		item = "Chaussures connectées IoT"
+		required = []string{"capteurs de mouvement", "micro-batterie", "puce Bluetooth"}
+	}
+	for _, it := range *inventory {
+		for _, req := range required {
+			if it == req {
+				player.Inventory = append(*inventory, item)
+				*playerGold -= 5
+				RemoveMaterials(inventory, required)
+				fmt.Printf("Vous avez fabriqué : %s\n", item)
+				return
+			}
+		}
+	}
+
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		ClearScreen()

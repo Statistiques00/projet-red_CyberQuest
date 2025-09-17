@@ -8,14 +8,14 @@ import (
 func TakePot(p *Character) {
 	potionIndex := -1
 	for i, item := range p.Inventory {
-		if item == "potion" {
+		if item == "antivirus" {
 			potionIndex = i
 			break
 		}
 	}
 
 	if potionIndex == -1 {
-		fmt.Println("Vous n'avez pas de potion dans votre inventaire.")
+		fmt.Println("Vous n'avez pas d'antivirus dans votre inventaire.")
 		return
 	}
 

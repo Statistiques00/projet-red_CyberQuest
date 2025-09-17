@@ -56,11 +56,11 @@ func CharacterTurn(player Character, monster *Monster) {
 		case 2:
 			ClearScreen()
 			println("+=========================================+")
-			println("|               1 - Poison                |")
-			println("|               2 - Heal                  |")
+			println("|               1 - Malware               |")
+			println("|               2 - Antivirus             |")
 			println("+=========================================+")
 			var potionChoice int
-			fmt.Print("Choisissez une potion à utiliser : ")
+			fmt.Print("Choisissez une script à utiliser : ")
 			fmt.Scan(&potionChoice)
 			switch potionChoice {
 			case 1:

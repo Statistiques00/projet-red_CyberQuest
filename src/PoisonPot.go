@@ -6,7 +6,7 @@ import (
 
 func PoisonPot(target *Monster) {
 	for i, c := range player.Inventory {
-		if c == "Potion de poison" {
+		if c == "malware" {
 			fmt.Println("+=========================================+")
 			fmt.Printf("| %s est empoisonné pendant 3 tours !      |\n", target.Name)
 			fmt.Println("+=========================================+")

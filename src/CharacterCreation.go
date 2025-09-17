@@ -37,9 +37,9 @@ func CharacterCreation() {
 	fmt.Print(`
 +==========================================+
 |  Choisissez votre classe :               |
-|    1 - Overclocker  (HP:100 / Mana:30)   |
-|    2 - Sysadmin   (HP: 80 / Mana:50)     |
-|    3 - Netrunner   (HP:120 / Mana:20)    |
+|    1 - Overclocker  (HP:100 / Mana:100)  |
+|    2 - Sysadmin   (HP: 130 / Mana:80)    |
+|    3 - Netrunner   (HP:80 / Mana:130)    |
 +==========================================+
 Classe : `)
 
