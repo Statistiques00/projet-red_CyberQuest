@@ -52,7 +52,7 @@ func AccessMarchand(c *Character) {
 				} else {
 				fmt.Println()
 				fmt.Println("+=========================================+")
-				fmt.Println("|          Pas assez de BTC !            |")
+				fmt.Println("|          Pas assez de BTC !             |")
 				fmt.Println("+=========================================+")
 			}
 			fmt.Print("Appuie sur Entrée pour continuer...")
@@ -63,6 +63,7 @@ func AccessMarchand(c *Character) {
 				fmt.Println("+=========================================+")
 				fmt.Println("|          Votre inventaire est vide.     |")
 				fmt.Println("+=========================================+")
+				fmt.Println()
 				fmt.Print("Appuie sur Entrée pour continuer...")
 				scanner.Scan()
 				continue
@@ -83,14 +84,18 @@ func AccessMarchand(c *Character) {
 			if err == nil && idx > 0 && idx <= len(c.Inventory) {
 				objet := c.Inventory[idx-1]
 				c.Inventory = append(c.Inventory[:idx-1], c.Inventory[idx:]...)
-				c.BTC += 5 // Prix de vente fixe, à adapter
-				fmt.Printf("| %s vendu pour 5 BTC !%s|\n", objet, spaces(34-len(objet)-15))
+				c.BTC += 15 // Prix de vente fixe, à adapter
+				fmt.Println()
+				fmt.Println("+=========================================+")
+				fmt.Printf("| %s vendu pour 15 BTC !%s |\n", objet, spaces(34-len(objet)-15))
+				fmt.Println("+=========================================+")
+				fmt.Println()
 			} else {
 				fmt.Println()
 				fmt.Println("+=========================================+")
 				fmt.Println("|           Numéro invalide.              |")
 				fmt.Println("+=========================================+")
-
+				fmt.Println()
 			}
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()
@@ -102,6 +107,7 @@ func AccessMarchand(c *Character) {
 				fmt.Println("+=========================================+")
 				fmt.Println("|           Choix Invalide.               |")
 				fmt.Println("+=========================================+")
+				fmt.Println()
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()
 		}
