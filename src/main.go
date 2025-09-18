@@ -38,7 +38,7 @@ func main() {
 			ForgeronMenu(&player)
 		case "5":
 			trainingMonster := InitGoblin()
-			TrainingFight(&player, trainingMonster, 1)
+			TrainingFight(&player, &trainingMonster, 1)
 		case "6":
 			fmt.Println("Au revoir !")
 			return

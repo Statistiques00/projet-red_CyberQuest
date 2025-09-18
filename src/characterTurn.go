@@ -5,7 +5,7 @@ import (
 )
 
 // Fonction qui simule le tour de jeu du joueur
-func CharacterTurn(player Character, monster *Monster) {
+func CharacterTurn(player *Character, monster *Monster) {
 	for {
 		fmt.Println()
 		fmt.Println()
@@ -47,8 +47,8 @@ func CharacterTurn(player Character, monster *Monster) {
 			monster.HP -= player.Spells[selec-1].degats + player.puissance_de_calcul
 			player.Energie -= player.Spells[selec-1].cost
 
-			fmt.Printf("| %s utilise %s et inflige %d dégâts !\n", player.Name, player.Spells[selec-1].nom, player.Spells[selec-1].degats)
-			fmt.Printf("| PV restants du monstre : %d/%d\n", monster.HP, monster.MaxHP)
+			fmt.Printf("| %s utilise %s et inflige %d dégâts !\n", player.Name, player.Spells[selec-1].nom, player.Spells[selec-1].degats+player.puissance_de_calcul)
+			fmt.Printf("| PV restants du %s : %d/%d\n", monster.Name, monster.HP, monster.MaxHP)
 			fmt.Println("+=========================================+")
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			fmt.Scanln()
@@ -66,7 +66,7 @@ func CharacterTurn(player Character, monster *Monster) {
 			case 1:
 				PoisonPot(monster)
 			case 2:
-				TakePot(&player)
+				TakePot(player)
 			default:
 				fmt.Println("| Choix invalide. Veuillez réessayer.     |")
 				fmt.Print("Appuie sur Entrée pour continuer...")
