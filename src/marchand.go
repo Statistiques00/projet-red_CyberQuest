@@ -70,7 +70,7 @@ func AccessMarchand(c *Character) {
 			}
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()
-		case "q":
+		case "4":
 			return
 		default:
 			fmt.Println("| Choix invalide.                         |")

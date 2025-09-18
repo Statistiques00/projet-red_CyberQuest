@@ -20,18 +20,23 @@ func TrainingFight(player *Character, monster Monster, tour int) {
 	if player.HP <= 0 {
 		fmt.Println("|         Vous avez été vaincu !          |")
 		fmt.Println("+=========================================+")
+		fmt.Println()
 		fmt.Print("Appuie sur Entrée pour continuer...")
 		fmt.Scanln()
 		return
 	}
 	if monster.HP <= 0 {
-		fmt.Println("|  Vous avez vaincu l'ennemi d'entraînement ! |")
+		fmt.Println()
+		fmt.Println("+=========================================+")
+		fmt.Println("|      Vous avez vaincu l'entraînement    |")
 		fmt.Println("+=========================================+")
 		HandleDrop(player, &monster)
-		fmt.Println("+=========================================+")
-		fmt.Print("Appuie sur Entrée pour continuer...")
+		// fmt.Println("+=========================================+")
+		// fmt.Print("Appuie sur Entrée pour continuer...")
 		player.XP += monster.Experience
 		LevelUp(player)
+		fmt.Println()
+		fmt.Print("Appuie sur Entrée pour continuer...")
 		fmt.Scanln()
 		return
 	}

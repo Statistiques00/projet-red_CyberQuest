@@ -38,7 +38,7 @@ func LevelUp(c *Character) {
 			break
 		}
 	} else {
-		fmt.Printf("|  Vous avez %d/%d XP. Continuez comme ça !   |\n", c.XP, c.Max_XP)
+		fmt.Printf("|     Vous avez %d/%d XP. Continuez !    |\n", c.XP, c.Max_XP)
 		fmt.Println("+=========================================+")
 	}
 }
