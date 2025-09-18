@@ -18,7 +18,7 @@ func AccessMarchand(c *Character) {
 		fmt.Println("| 1 - Acheter une potion de vie   (10 BTC) |")
 		fmt.Println("| 2 - Acheter une potion de poison (8 BTC) |")
 		fmt.Println("| 3 - Vendre un objet                      |")
-		fmt.Println("| q - Quitter le marchand                  |")
+		fmt.Println("| 4 - Quitter le marchand                  |")
 		fmt.Println("+==========================================+")
 		fmt.Print("Choix : ")
 		scanner.Scan()
