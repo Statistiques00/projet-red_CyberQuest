@@ -29,9 +29,10 @@ func TrainingFight(player *Character, monster Monster, tour int) {
 		fmt.Println("+=========================================+")
 		HandleDrop(player, &monster)
 		fmt.Println("+=========================================+")
-		fmt.Print("Appuie sur Entrée pour continuer...")
-		player.XP += monster.Experience
 		LevelUp(player)
+		fmt.Println("Appuie sur Entrée pour continuer...")
+		player.XP += monster.Experience
+		
 		fmt.Scanln()
 		return
 	}
