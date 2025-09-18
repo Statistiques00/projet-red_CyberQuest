@@ -66,6 +66,8 @@ func TrainingFight(player *Character, monster Monster, tour int) {
 
 		fmt.Printf("DEBUG: Inventaire joueur APRES drop : %v\n", player.Inventory)
 		fmt.Print("Appuie sur Entrée pour continuer...")
+		player.XP += monster.Experience
+		LevelUp(player)
 		fmt.Scanln()
 		return
 	}

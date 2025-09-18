@@ -7,6 +7,7 @@ func InitCharacter(c rune) *Character {
 		player = Character{
 			Class:                 "Overclocker",
 			Level:                 1,
+			Max_XP:                100,
 			BTC:                   0,
 			Energie:               100,
 			Spells:                []Spell{Overclock, CodeInjection, Pingflood, DataSurge, KernelPanic},
@@ -25,6 +26,7 @@ func InitCharacter(c rune) *Character {
 		player = Character{
 			Class:                 "SysAdmin",
 			Level:                 1,
+			Max_XP:                100,
 			BTC:                   0,
 			Energie:               80,
 			Spells:                []Spell{PatchUpdate, Defrag, Hotfix, ProxyBoost},
@@ -43,6 +45,7 @@ func InitCharacter(c rune) *Character {
 		player = Character{
 			Class:                 "Netrunner",
 			Level:                 1,
+			Max_XP:                100,
 			BTC:                   0,
 			Statut:                0,
 			Energie:               130,

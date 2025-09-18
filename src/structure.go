@@ -53,6 +53,8 @@ type Character struct {
 	Name                  string
 	Class                 string
 	Level                 int
+	Max_XP                int
+	XP                    int
 	BTC                   int
 	Statut                int
 	puissance_de_calcul   int //attaque
