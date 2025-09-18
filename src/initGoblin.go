@@ -34,7 +34,7 @@ func InitGoblin() Monster {
 				{Name: "verre spécial", DropChance: 1.0},
 				{Name: "capteur de mouvement", DropChance: 1.0},
 			},
-			BTC: 5,
+			BTC: 15,
 		}
 	case 2:
 		return Monster{
@@ -57,7 +57,7 @@ func InitGoblin() Monster {
 				{Name: "verre spécial", DropChance: 1.0},
 				{Name: "capteur de mouvement", DropChance: 1.0},
 			},
-			BTC: 5,
+			BTC: 15,
 		}
 	default:
 		return Monster{
@@ -80,7 +80,7 @@ func InitGoblin() Monster {
 				{Name: "verre spécial", DropChance: 1.0},
 				{Name: "capteur de mouvement", DropChance: 1.0},
 			},
-			BTC: 5,
+			BTC: 15,
 		}
 	}
 }
