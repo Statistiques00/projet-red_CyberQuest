@@ -13,9 +13,9 @@ func UpgradeInventorySlot() bool {
 }
 
 // Exemple d'ajout dans le marchand
-func BuyInventoryUpgrade(playerGold *int) bool {
-	if *playerGold >= 30 && InventoryUpgradeUsed < 3 {
-		*playerGold -= 30
+func BuyInventoryUpgrade(player Character) bool {
+	if player.BTC >= 30 && InventoryUpgradeUsed < 3 {
+		player.BTC -= 30
 		return UpgradeInventorySlot()
 	}
 	return false

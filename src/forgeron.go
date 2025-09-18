@@ -17,8 +17,9 @@ func ForgeronMenu(player *Character) {
 		fmt.Println("+=========================================+")
 		fmt.Printf("| BTC : %-34d|\n", player.BTC)
 		fmt.Println("+=========================================+")
-		fmt.Println("| 1 - Forger Une Armure                   |")
-		fmt.Println("| 2 - Quitter                             |")
+		fmt.Println("| 1 - Forger Une Armure  				   |")
+		fmt.Println("| 2 - Améliorer le sac   				   |")
+		fmt.Println("| 3 - Quitter            				   |")
 		fmt.Println("+=========================================+")
 		fmt.Print("Choix : ")
 		scanner.Scan()
@@ -76,6 +77,10 @@ func ForgeronMenu(player *Character) {
 				return
 			}
 		case "2":
+			ClearScreen()
+			BuyInventoryUpgrade(*player)
+			return
+		case "3":
 			ClearScreen()
 			return
 		default:
