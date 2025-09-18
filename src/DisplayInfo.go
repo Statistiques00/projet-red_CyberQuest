@@ -50,8 +50,7 @@ func DisplayInfo(c *Character) {
 		c.Equipements.bottes.vitesse_de_connection +
 		c.Equipements.armes.vitesse_de_connection
 
-	totalValeur := c.valeur +
-		c.Equipements.casque.valeur +
+	totalValeur := c.Equipements.casque.valeur +
 		c.Equipements.armure.valeur +
 		c.Equipements.bottes.valeur +
 		c.Equipements.armes.valeur
