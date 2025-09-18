@@ -57,7 +57,7 @@ func DisplayInfo(c *Character) {
 
 	// Nouvelle section stats
 	fmt.Println("+-------------------------------+")
-	fmt.Println("|           STATISTIQUES        |")
+	fmt.Println("|         STATISTIQUES          |")
 	fmt.Println("+-------------------------------+")
 	fmt.Printf("| Firewall             : %3d    |\n", totalFirewall)
 	fmt.Printf("| Puissance de calcul  : %3d    |\n", totalPuissance)

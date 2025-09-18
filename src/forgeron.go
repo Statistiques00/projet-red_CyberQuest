@@ -79,6 +79,7 @@ func ForgeronMenu(player *Character) {
 		case "2":
 			ClearScreen()
 			BuyInventoryUpgrade(*player)
+			fmt.Print("Vous avez amélioré votre sac ! Nouvelle capacité :", MaxInventoryCapacity1)
 			return
 		case "3":
 			ClearScreen()
