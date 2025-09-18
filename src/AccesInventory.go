@@ -43,7 +43,7 @@ func AccessInventory(c *Character) {
 		case "2":
 			fmt.Print("Numéro de l'objet à retirer : ")
 			scanner.Scan()
-			RemoveInventory(&c, scanner.Text())
+			RemoveInventory(c, scanner.Text())
 		case "3":
 			TakePot(c)
 			fmt.Print("Appuie sur Entrée pour continuer...")
