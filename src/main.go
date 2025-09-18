@@ -29,7 +29,7 @@ func main() {
 		case "1":
 			DisplayInfo(&player)
 		case "2":
-			AccessInventory(player)
+			AccessInventory(&player)
 		case "3":
 			fmt.Println("Marchand")
 			AccessMarchand(&player)
@@ -45,10 +45,15 @@ func main() {
 				Defense:    2,
 				Speed:      3,
 				Experience: 10,
-				LootTable:  []LootItem{},
-				BTC:        0,
+				LootTable: []LootItem{
+					{Name: "Casque de base", DropChance: 1.0},
+					{Name: "Armure de base", DropChance: 1.0},
+					{Name: "Bottes de base", DropChance: 1.0},
+					{Name: "Epée de base", DropChance: 1.0},
+				},
+				BTC: 10,
 			}
-			TrainingFight(player, trainingMonster, 1)
+			TrainingFight(&player, trainingMonster, 1)
 		case "6":
 			fmt.Println("Au revoir !")
 			return

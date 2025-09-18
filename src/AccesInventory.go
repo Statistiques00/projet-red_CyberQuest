@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func AccessInventory(c Character) {
+func AccessInventory(c *Character) {
     scanner := bufio.NewScanner(os.Stdin)
     for {
         ClearScreen()
@@ -40,9 +40,9 @@ func AccessInventory(c Character) {
         case "a":
             fmt.Print("Nom de l'objet à ajouter : ")
             scanner.Scan()
-            AddInventory(c, scanner.Text())
+            AddInventory(*c, scanner.Text())
         case "u":
-            TakePot(&c)
+            TakePot(c)
             fmt.Print("Appuie sur Entrée pour continuer...")
             scanner.Scan()
         case "q":
