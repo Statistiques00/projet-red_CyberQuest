@@ -35,7 +35,7 @@ func main() {
 			AccessMarchand(&player)
 		case "4":
 			fmt.Println("Forgeron")
-			ForgeronMenu(&player.BTC, &player.Inventory)
+			ForgeronMenu(&player)
 		case "5":
 			trainingMonster := Monster{
 				Name:       "Ennemi d'entraînement",
