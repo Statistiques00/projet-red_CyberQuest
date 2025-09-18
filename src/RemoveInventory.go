@@ -2,12 +2,19 @@ package main
 
 // Fonction pour retirer un objet de l'inventaire
 func RemoveInventory(c *Character, item int) {
-	for i, v := range c.Inventory {
-		if v == c.Inventory[item-1] {
-			// On enlève l'élément i du slice
-			c.Inventory = append(c.Inventory[:i-1], c.Inventory[i:]...)
-			return
-		}
+	// Check bounds
+	if item < 1 || item > len(c.Inventory) {
+		return // Invalid item index
 	}
 
+	// Convert to 0-based index
+	index := item - 1
+
+	// Remove the item at the specified index
+	if len(c.Inventory) == 1 {
+		c.Inventory = []string{}
+	} else {
+		// Remove element at index using slice operations
+		c.Inventory = append(c.Inventory[:index], c.Inventory[index+1:]...)
+	}
 }

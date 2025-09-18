@@ -21,14 +21,14 @@ func HandleDrop(player *Character, monster *Monster) {
 	fmt.Printf("| Vous obtenez :%-*s|\n", maxLen, name)
 	fmt.Println("+=========================================+")
 
-	AddInventory(*player, loot.Name)
+	AddInventory(player, loot.Name)
 
 	if monster.BTC > 0 {
 		player.BTC += monster.BTC
 		fmt.Println()
 		fmt.Println("+=========================================+")
 		fmt.Printf("| Vous ramassez %d BTC sur le monstre.    |\n", monster.BTC)
-		} else {
+	} else {
 		fmt.Println("| Aucun BTC trouvé sur l'ennemi.          |")
 	}
 }

@@ -39,12 +39,21 @@ func AccessInventory(c *Character) {
 		case "1":
 			fmt.Print("Nom de l'objet à ajouter : ")
 			scanner.Scan()
-			AddInventory(*c, scanner.Text())
+			AddInventory(c, scanner.Text())
 		case "2":
+			if len(c.Inventory) == 0 {
+				fmt.Println("Inventaire vide.")
+				fmt.Print("Appuie sur Entrée pour continuer...")
+				scanner.Scan()
+				continue
+			}
 			fmt.Print("Numéro de l'objet à retirer : ")
+			scanner.Scan()
+			choixItem := scanner.Text()
+
+			// Conversion string vers int
 			var x int
-			_, err := fmt.Scan(&x)
-			RemoveInventory(&player, x)
+			_, err := fmt.Sscanf(choixItem, "%d", &x)
 			if err != nil {
 				fmt.Println("Entrée invalide.")
 				fmt.Print("Appuie sur Entrée pour continuer...")
