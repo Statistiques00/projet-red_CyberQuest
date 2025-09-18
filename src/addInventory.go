@@ -8,5 +8,4 @@ func AddInventory(c Character, item string) {
 		return
 	}
 	c.Inventory = append(c.Inventory, item)
-	fmt.Printf("%s a été ajouté à l'inventaire\n", item)
 }
