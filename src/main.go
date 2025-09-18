@@ -6,135 +6,9 @@ import (
 	"os"
 )
 
-type Casque struct {
-	nom                   string
-	firewall              int
-	puissance_de_calcul   int
-	stability             int
-	vitesse_de_connection int
-	valeur                int
-}
-
-type Armure struct {
-	nom                   string
-	firewall              int
-	puissance_de_calcul   int
-	stability             int
-	vitesse_de_connection int
-	valeur                int
-}
-
-type Bottes struct {
-	nom                   string
-	firewall              int
-	puissance_de_calcul   int
-	stability             int
-	vitesse_de_connection int
-	valeur                int
-}
-
-type Armes struct {
-	nom                   string
-	firewall              int
-	puissance_de_calcul   int
-	stability             int
-	vitesse_de_connection int
-	valeur                int
-}
-
-type Equipements struct {
-	casque Casque
-	armure Armure
-	bottes Bottes
-	armes  Armes
-}
-
-type Spell struct {
-	nom         string
-	cost        int
-	description string
-	degats      int
-}
-type Character struct {
-	Name                  string
-	Class                 string
-	Level                 int
-	BTC                   int
-	puissance_de_calcul   int //attaque
-	firewall              int //defense
-	stability             int //tx critique
-	vitesse_de_connection int //initiative
-	Energie               int //mana
-	Max_Energie           int //max mana
-	MaxHP                 int
-	HP                    int
-	Inventory             []string
-	Equipements           Equipements
-	Spells                []Spell
-	MaxInventory          int
-}
-
-type Monster struct {
-	// definir les attributs des monstres ici
-	Name       string
-	MaxHP      int
-	HP         int
-	Attack     int
-	Defense    int
-	Speed      int
-	Experience int
-	Loot       []string
-	BTC        int
-}
-
-// Declare player as a package-level variable
-var player Character
-
-var Spells1 = Spell{
-	nom:         "Attaque basique",
-	cost:        0,
-	description: "Une attaque simple mais efficace.",
-	degats:      10,
-}
-
-var equipements = Equipements{
-	casque: Casque{
-		nom:                   "Casque de base",
-		firewall:              5,
-		puissance_de_calcul:   0,
-		stability:             0,
-		vitesse_de_connection: 0,
-		valeur:                10,
-	},
-	armure: Armure{
-		nom:                   "Armure de base",
-		firewall:              15,
-		puissance_de_calcul:   0,
-		stability:             0,
-		vitesse_de_connection: -1,
-		valeur:                30,
-	},
-	bottes: Bottes{
-		nom:                   "Bottes de base",
-		firewall:              5,
-		puissance_de_calcul:   0,
-		stability:             0,
-		vitesse_de_connection: 2,
-		valeur:                20,
-	},
-	armes: Armes{
-		nom:                   "Epée de base",
-		firewall:              0,
-		puissance_de_calcul:   10,
-		stability:             5,
-		vitesse_de_connection: 0,
-		valeur:                25,
-	},
-}
-
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	player = CharacterCreation()
+	CharacterCreation()
 	for {
 		ClearScreen()
 		fmt.Print(`
@@ -153,7 +27,7 @@ func main() {
 		choix := scanner.Text()
 		switch choix {
 		case "1":
-			player.DisplayInfo()
+			DisplayInfo(&player)
 		case "2":
 			AccessInventory(&player)
 		case "3":
@@ -161,7 +35,7 @@ func main() {
 			AccessMarchand(&player)
 		case "4":
 			fmt.Println("Forgeron")
-			ForgeronMenu(&player.BTC, &player.Inventory)
+			ForgeronMenu(&player)
 		case "5":
 			trainingMonster := Monster{
 				Name:       "Ennemi d'entraînement",
@@ -171,10 +45,15 @@ func main() {
 				Defense:    2,
 				Speed:      3,
 				Experience: 10,
-				Loot:       []string{},
-				BTC:        0,
+				LootTable: []LootItem{
+					{Name: "Casque de base", DropChance: 1.0},
+					{Name: "Armure de base", DropChance: 1.0},
+					{Name: "Bottes de base", DropChance: 1.0},
+					{Name: "Epée de base", DropChance: 1.0},
+				},
+				BTC: 10,
 			}
-			TrainingFight(&player, trainingMonster)
+			TrainingFight(&player, trainingMonster, 1)
 		case "6":
 			fmt.Println("Au revoir !")
 			return

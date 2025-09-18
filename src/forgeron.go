@@ -8,82 +8,79 @@ import (
 
 var MaxInventoryCapacity1 int = 20 // à adapter selon votre gestion
 
-func hasMaterials(inventory *[]string, required []string) bool {
-	inv := make(map[string]int)
-	for _, item := range *inventory {
-		inv[item]++
-	}
-	for _, mat := range required {
-		if inv[mat] == 0 {
-			return false
-		}
-		inv[mat]--
-	}
-	return true
-}
-
-func removeMaterials(inventory *[]string, required []string) {
-	for _, mat := range required {
-		for i, item := range *inventory {
-			if item == mat {
-				*inventory = append((*inventory)[:i], (*inventory)[i+1:]...)
-				break
-			}
-		}
-	}
-}
-
-func ForgeronMenu(playerGold *int, inventory *[]string) {
+func ForgeronMenu(player *Character) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		ClearScreen()
 		fmt.Println("+=========================================+")
 		fmt.Println("|            === FORGERON ===             |")
 		fmt.Println("+=========================================+")
-		fmt.Printf("| BTC : %-34d|\n", *playerGold)
+		fmt.Printf("| BTC : %-34d|\n", player.BTC)
 		fmt.Println("+=========================================+")
-		fmt.Println("| 1 - Améliorer une arme   (20 BTC)        |")
-		fmt.Println("| 2 - Améliorer une armure (15 BTC)        |")
-		fmt.Println("| 3 - Réparer un objet     (10 BTC)        |")
-		fmt.Println("| q - Quitter le forgeron                 |")
+		fmt.Println("| 1 - Forger Une Armure                   |")
+		fmt.Println("| 2 - Quitter                             |")
 		fmt.Println("+=========================================+")
 		fmt.Print("Choix : ")
 		scanner.Scan()
 		choix := scanner.Text()
 		switch choix {
 		case "1":
-			if *playerGold >= 20 {
-				*playerGold -= 20
-				fmt.Println("| Arme améliorée !                        |")
-			} else {
-				fmt.Println("| Pas assez de BTC !                      |")
+			ClearScreen()
+			fmt.Println("+=========================================+")
+			fmt.Println("|              === FORGERON 😊 ===        |")
+			fmt.Println("+=========================================+")
+			fmt.Println("| 1 - Lunettes anti-lumière bleue         |")
+			fmt.Println("| 2 - Blindage électromagnétique          |")
+			fmt.Println("| 3 - Chaussures connectées IoT           |")
+			fmt.Println("| 4 - Quitter                             |")
+			fmt.Println("+=========================================+")
+			fmt.Print("Choix : ")
+			var choix2 int
+			fmt.Scan(&choix2)
+
+			if choix2 == 4 {
+				ClearScreen()
+				return
 			}
-			fmt.Print("Appuie sur Entrée pour continuer...")
-			scanner.Scan()
+			var item string
+			var required []string
+			switch choix2 {
+			case 1:
+				item = "Lunettes anti-lumière bleue"
+				required = []string{"verre spécial", "isolant plastique", "monture légère"}
+				if HasMaterials(player, required) {
+					player.Inventory = append(player.Inventory, item)
+					RemoveMaterials(&player.Inventory, required)
+					player.BTC -= 5
+					fmt.Println("Vous avez forgé :", item)
+				}
+			case 2:
+				item = "Blindage électromagnétique"
+				required = []string{"plaque métallique", "isolant plastique", "alimentation haute capacité"}
+				if HasMaterials(player, required) {
+					player.Inventory = append(player.Inventory, item)
+					RemoveMaterials(&player.Inventory, required)
+					player.BTC -= 5
+					fmt.Println("Vous avez forgé :", item)
+				}
+			case 3:
+				item = "Chaussures connectées IoT"
+				required = []string{"capteurs de mouvement", "micro-batterie", "puce Bluetooth"}
+				if HasMaterials(player, required) {
+					player.Inventory = append(player.Inventory, item)
+					RemoveMaterials(&player.Inventory, required)
+					player.BTC -= 5
+					fmt.Println("Vous avez forgé :", item)
+				}
+			case 4:
+				return
+			}
 		case "2":
-			if *playerGold >= 15 {
-				*playerGold -= 15
-				fmt.Println("| Armure améliorée !                      |")
-			} else {
-				fmt.Println("| Pas assez de BTC !                      |")
-			}
-			fmt.Print("Appuie sur Entrée pour continuer...")
-			scanner.Scan()
-		case "3":
-			if *playerGold >= 10 {
-				*playerGold -= 10
-				fmt.Println("| Objet réparé !                          |")
-			} else {
-				fmt.Println("| Pas assez de BTC !                      |")
-			}
-			fmt.Print("Appuie sur Entrée pour continuer...")
-			scanner.Scan()
-		case "q":
+			ClearScreen()
 			return
 		default:
-			fmt.Println("| Choix invalide.                         |")
-			fmt.Print("Appuie sur Entrée pour continuer...")
-			scanner.Scan()
+			fmt.Println("Choix invalide.")
 		}
 	}
+
 }
