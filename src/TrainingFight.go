@@ -28,7 +28,7 @@ func TrainingFight(player *Character, monster Monster, tour int) {
 	if monster.HP <= 0 {
 		fmt.Println()
 		fmt.Println("+=========================================+")
-		fmt.Println("|      Vous avez vaincu l'entraînement    |")
+		fmt.Println("|      Vous avez Gagné                    |")
 		fmt.Println("+=========================================+")
 		HandleDrop(player, &monster)
 		// fmt.Println("+=========================================+")

@@ -42,8 +42,16 @@ func AccessInventory(c *Character) {
 			AddInventory(*c, scanner.Text())
 		case "2":
 			fmt.Print("Numéro de l'objet à retirer : ")
-			scanner.Scan()
-			RemoveInventory(c, scanner.Text())
+			var x int
+			_, err := fmt.Scan(&x)
+			RemoveInventory(&player, x)
+			if err != nil {
+				fmt.Println("Entrée invalide.")
+				fmt.Print("Appuie sur Entrée pour continuer...")
+				scanner.Scan()
+				continue
+			}
+			RemoveInventory(c, x)
 		case "3":
 			TakePot(c)
 			fmt.Print("Appuie sur Entrée pour continuer...")
