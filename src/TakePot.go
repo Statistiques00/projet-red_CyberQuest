@@ -10,8 +10,7 @@ func TakePot(p *Character) {
 	for i, item := range p.Inventory {
 		if item == "antivirus" {
 			potionIndex = i
-			heal := 50
-			p.HP += heal
+			p.HP += 50
 			if p.HP > p.MaxHP {
 				p.HP = p.MaxHP
 			}
@@ -26,16 +25,7 @@ func TakePot(p *Character) {
 
 	// Consommer la potion
 	p.Inventory = append(p.Inventory[:potionIndex], p.Inventory[potionIndex+1:]...)
-
 	fmt.Printf("Vous avez utilisé une potion ! Points de vie : %d/%d\n", p.HP, p.MaxHP)
-
-
-	// Soigner le joueur
-	p.HP += 50
-	if p.HP > p.MaxHP {
-		p.HP = p.MaxHP
-	}
-
-	fmt.Printf("Vous avez utilisé une potion ! PV : %d/%d\n", p.HP, p.MaxHP)
+	
 }
 
