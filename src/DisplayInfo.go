@@ -50,15 +50,14 @@ func DisplayInfo(c *Character) {
 		c.Equipements.bottes.vitesse_de_connection +
 		c.Equipements.armes.vitesse_de_connection
 
-	totalValeur := c.valeur +
-		c.Equipements.casque.valeur +
+	totalValeur := c.Equipements.casque.valeur +
 		c.Equipements.armure.valeur +
 		c.Equipements.bottes.valeur +
 		c.Equipements.armes.valeur
 
 	// Nouvelle section stats
 	fmt.Println("+-------------------------------+")
-	fmt.Println("|           STATISTIQUES        |")
+	fmt.Println("|         STATISTIQUES          |")
 	fmt.Println("+-------------------------------+")
 	fmt.Printf("| Firewall             : %3d    |\n", totalFirewall)
 	fmt.Printf("| Puissance de calcul  : %3d    |\n", totalPuissance)

@@ -8,25 +8,44 @@ import (
 
 func CharacterCreation() {
 	scanner := bufio.NewScanner(os.Stdin)
-	ClearScreen()
-	fmt.Print(`
+	var name string
+	var class string
+	for {
+		ClearScreen()
+		fmt.Print(`
 +===================================+ 
 |    === CREATION PERSONNAGE ===    | 
 +===================================+ 
 | Entrez votre nom : 		    |
 +===================================+
 `)
+		fmt.Print("\033[2A")
+		fmt.Print("\033[21C")
+		scanner.Scan()
+		name = scanner.Text()
+		if len(name) == 0 {
+			ClearScreen()
+			fmt.Print(`
++===================================+
+|    === CREATION PERSONNAGE ===    |
++===================================+
+|      Nom du personnage manquant   |
++===================================+
 
-	fmt.Print("\033[2A")  // Remonte d'une ligne
-	fmt.Print("\033[21C") // Avance de 21 colonnes (après "Entrez votre nom : ")
++===================================+
+| Appuie sur Entrée pour réessayer  |
++===================================+
+`)
+			scanner.Scan()
+			continue
+		}
+		break
+	}
 
-	scanner.Scan()
-	name := scanner.Text()
-
-	// Affiche la suite avec le nom saisi
-	ClearScreen()
-	const cadreLargeur = 35
-	fmt.Printf(`
+	for {
+		ClearScreen()
+		const cadreLargeur = 35
+		fmt.Printf(`
 +===================================+
 |    === CREATION PERSONNAGE ===    |
 +===================================+
@@ -34,7 +53,7 @@ func CharacterCreation() {
 +===================================+
 `, cadreLargeur-len(" Entrez votre nom : "), name)
 
-	fmt.Print(`
+		fmt.Print(`
 +==========================================+
 |  Choisissez votre classe :               |
 |    1 - Overclocker  (HP:100 / Mana:100)  |
@@ -43,24 +62,39 @@ func CharacterCreation() {
 +==========================================+
 Classe : `)
 
-	class := ""
+		scanner.Scan()
+		c := scanner.Text()
+		switch c {
+		case "1":
+			class = "Overclocker"
+			InitCharacter(rune('1'))
+		case "2":
+			class = "SysAdmin"
+			InitCharacter(rune('2'))
+		case "3":
+			class = "Netrunner"
+			InitCharacter(rune('3'))
+		default:
+			class = ""
+		}
+		if len(class) == 0 {
+			ClearScreen()
+			fmt.Print(`
++===================================+
+|    === CREATION PERSONNAGE ===    |
++===================================+
+|        Classe du personnage       |
+|             manquante             |
++===================================+
 
-	scanner.Scan()
-	c := scanner.Text()
-	switch c {
-	case "1":
-		class = "Overclocker"
-		InitCharacter(rune('1'))
-	case "2":
-		class = "SysAdmin"
-		InitCharacter(rune('2'))
-	case "3":
-		class = "Netrunner"
-		InitCharacter(rune('3'))
-
-	default:
-		fmt.Print("Choix invalide. Réessayez : ")
-
++===================================+
+| Appuie sur Entrée pour réessayer  |
++===================================+
+`)
+			scanner.Scan()
+			continue
+		}
+		break
 	}
 
 	// Affichage du récapitulatif
@@ -75,7 +109,6 @@ Classe : `)
 	fmt.Println("+===================================+")
 	fmt.Print("\nAppuie sur Entrée pour continuer...")
 	scanner.Scan() // Attend que l'utilisateur appuie sur Entrée
-
 }
 
 // Fonction utilitaire pour l'alignement
@@ -85,3 +118,4 @@ func spaces(n int) string {
 	}
 	return fmt.Sprintf("%*s", n, "")
 }
+

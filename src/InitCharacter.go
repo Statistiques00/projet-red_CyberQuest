@@ -1,6 +1,6 @@
 package main
 
-func InitCharacter(c rune) *Character {
+func InitCharacter(c rune) {
 	// initialiser les personnages ici
 	switch c {
 	case '1':
@@ -8,7 +8,7 @@ func InitCharacter(c rune) *Character {
 			Class:                 "Overclocker",
 			Level:                 1,
 			Max_XP:                100,
-			BTC:                   0,
+			BTC:                   6,
 			Energie:               100,
 			Spells:                []Spell{Overclock, CodeInjection, Pingflood, DataSurge, KernelPanic},
 			Statut:                0,
@@ -27,7 +27,7 @@ func InitCharacter(c rune) *Character {
 			Class:                 "SysAdmin",
 			Level:                 1,
 			Max_XP:                100,
-			BTC:                   0,
+			BTC:                   6,
 			Energie:               80,
 			Spells:                []Spell{PatchUpdate, Defrag, Hotfix, ProxyBoost},
 			Statut:                0,
@@ -46,7 +46,7 @@ func InitCharacter(c rune) *Character {
 			Class:                 "Netrunner",
 			Level:                 1,
 			Max_XP:                100,
-			BTC:                   0,
+			BTC:                   6,
 			Statut:                0,
 			Energie:               130,
 			Max_Energie:           130,
@@ -61,5 +61,4 @@ func InitCharacter(c rune) *Character {
 			Spells:                []Spell{DDoS, TrojanHorse, ManInTheMiddle, RootAccess},
 		}
 	}
-	return nil
 }
