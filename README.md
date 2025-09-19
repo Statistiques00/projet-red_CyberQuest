@@ -38,7 +38,7 @@ Optionnel :
 1. Clonez le dépôt :
     ```bash
     git clone https://github.com/Statistiques00/projet-red_CyberQuest
-    cd src/```
+    cd src/
 
 ## Utilisation
 
