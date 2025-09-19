@@ -84,7 +84,7 @@ func AccessMarchand(c *Character) {
 			if err == nil && idx > 0 && idx <= len(c.Inventory) {
 				objet := c.Inventory[idx-1]
 				c.Inventory = append(c.Inventory[:idx-1], c.Inventory[idx:]...)
-				c.BTC += 15 // Prix de vente fixe, à adapter
+				c.BTC += 15 
 				fmt.Println()
 				fmt.Println("+=========================================+")
 				fmt.Printf("| %s vendu pour 15 BTC !%s |\n", objet, spaces(34-len(objet)-15))
