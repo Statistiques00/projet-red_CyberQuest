@@ -41,8 +41,8 @@ func AccessMarchand(c *Character) {
 			fmt.Print("Appuie sur Entrée pour continuer...")
 			scanner.Scan()
 		case "2":
-			if c.BTC >= 8 {
-				c.BTC -= 8
+			if c.BTC >= 3 {
+				c.BTC -= 3
 				c.Inventory = append(c.Inventory, "Potion de poison")
 				fmt.Println()
 				fmt.Println("+=========================================+")
