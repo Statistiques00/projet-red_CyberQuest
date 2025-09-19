@@ -51,7 +51,6 @@ func AccessInventory(c *Character) {
 			scanner.Scan()
 			choixItem := scanner.Text()
 
-			// Conversion string vers int
 			var x int
 			_, err := fmt.Sscanf(choixItem, "%d", &x)
 			if err != nil {
